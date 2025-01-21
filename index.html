@@ -1,163 +1,252 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Humera's  Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #ff0000;
+            --secondary-color: #8b0000;
+            --background-color: #000000;
+            --text-color: #ffffff;
+            --accent-color: #ff3333;
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'VT323', monospace;
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-size: 20px;
         }
 
         .container {
-            width: 80%;
+            width: 85%;
             margin: auto;
             overflow: hidden;
-}
-
-header {
-            background: linear-gradient(to right, #ed4f4f, #77b748);
-            color: #fff;
-            padding: 30px 0;
-            min-height: 70px;
-            border-bottom: 3px solid #fff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
         }
 
-        header a {
-            color: #fff;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 16px;
-            transition: color 0.3s;
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                rgba(255, 0, 0, 0) 95%,
+                rgba(255, 0, 0, 0.1) 100%
+            );
+            pointer-events: none;
+            animation: scanline 10s linear infinite;
         }
 
-        header a:hover {
-            color: #ffd700; /* Gold color on hover */
+        @keyframes scanline {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
         }
 
-        header ul {
-            padding: 0;
-            list-style: none;
-        }
-
-        header li {
-            display: inline;
-            padding: 0 20px;
+        header {
+            background: var(--secondary-color);
+            color: var(--text-color);
+            padding: 20px 0;
+            border-bottom: 4px solid var(--primary-color);
+            font-family: 'Press Start 2P', cursive;
+            text-shadow: 2px 2px var(--background-color);
         }
 
         header h1 {
-            float: left;
             font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+            padding: 10px 0;
+            text-align: center;
         }
 
-        header nav {
-            float: right;
-            margin-top: 10px;
+        nav {
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        nav ul {
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 16px;
+            padding: 5px 10px;
+            border: 2px solid var(--primary-color);
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            background: var(--primary-color);
+            color: var(--background-color);
         }
 
         section {
-            padding: 40px 0;
-            background: #fff;
-            margin: 20px 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        section h2, section h1 {
-            color: #ed4f4f;
-            text-align: center;
-        }
-
-        footer {
-            background: #e07878;
-            color: #fff;
-            text-align: center;
+            margin: 30px 0;
             padding: 20px;
-            margin-top: 20px;
-            border-radius: 8px;
+            border: 2px solid var(--primary-color);
+            background: rgba(139, 0, 0, 0.1);
+            box-shadow: 0 0 10px var(--primary-color);
+        }
+
+        section h2 {
+            font-family: 'Press Start 2P', cursive;
+            color: var(--primary-color);
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 30px;
         }
 
         .project {
-            margin: 20px 0;
+            border: 2px solid var(--secondary-color);
             padding: 20px;
-            background: #f9f9f9;
-            border-left: 5px solid #ed4f4f;
-            border-radius: 5px;
+            margin: 20px 0;
+            background: rgba(139, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project:hover {
+            transform: translateX(10px);
+            box-shadow: -5px 0 15px var(--primary-color);
+        }
+
+        .project h3 {
+            color: var(--accent-color);
+            font-family: 'Press Start 2P', cursive;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        footer {
+            background: var(--secondary-color);
+            color: var(--text-color);
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 4px solid var(--primary-color);
+        }
+
+        /* CRT Effect */
+        @keyframes flicker {
+            0% { opacity: 0.9; }
+            5% { opacity: 0.95; }
+            10% { opacity: 0.9; }
+            15% { opacity: 0.95; }
+            20% { opacity: 1; }
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(255, 0, 0, 0.03),
+                rgba(255, 0, 0, 0.03) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            animation: flicker 0.15s infinite;
+            z-index: 999;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px var(--primary-color); }
+            50% { text-shadow: 0 0 20px var(--primary-color); }
+            100% { text-shadow: 0 0 5px var(--primary-color); }
+        }
+
+        h2, h1 {
+            animation: glow 2s infinite;
         }
 
         @media (max-width: 768px) {
-            header h1, header nav {
-                float: none;
-                text-align: center;
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
             }
 
-            header nav ul {
-                padding: 10px 0;
-            }
-
-            header li {
-                display: block;
-                padding: 10px 0;
+            header h1 {
+                font-size: 20px;
             }
 
             .container {
-                width: 90%;
+                width: 95%;
             }
         }
     </style>
 </head>
 <body>
+    <div class="scanline"></div>
     <header>
         <div class="container">
-            <h1>My Portfolio</h1>
+            <h1>Humera's Portfolio</h1>
             <nav>
                 <ul>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#projects">Skills</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
+
     <section id="about">
         <div class="container">
-            <h2>About Me</h2>
-            <p>I am Md Humera Tasneem, a passionate learner.</p>
+            <h2>[ ABOUT ME ]</h2>
+            <p>I am Md Humera Tasneem, a passionate learner exploring the digital frontier.</p>
         </div>
     </section>
+
     <section id="projects">
         <div class="container">
-            <h1>Skills</h1>
+            <h2>[ SKILLS ]</h2>
             <div class="project">
-                <h3>HTML</h3>
-                <h3>CSS</h3>
-                <h3>JavaScript</h3>
-                <p>Description of the project.</p>
+                <h3>> HTML</h3>
+                <p>Creating structured and semantic web content</p>
             </div>
-            <!-- Add more projects as needed -->
+            <div class="project">
+                <h3>> CSS</h3>
+                <p>Styling and animating web interfaces</p>
+            </div>
+            <div class="project">
+                <h3>> JavaScript</h3>
+                <p>Building interactive and dynamic experiences</p>
+            </div>
         </div>
     </section>
+
     <section id="contact">
         <div class="container">
-            <h2>Contact</h2>
-            <p>Get in touch with me through my social media or email.</p>
+            <h2>[ CONTACT ]</h2>
+            <p>Ready to connect? Find me through these digital channels:</p>
         </div>
     </section>
+
     <footer>
         <div class="container">
-            <p>&copy; 2025 My Portfolio. All rights reserved.</p>
+            <p>&copy; 2025  | ALL RIGHTS RESERVED</p>
         </div>
     </footer>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // JavaScript functionality can go here
-        });
-    </script>
 </body>
 </html>
